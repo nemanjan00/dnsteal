@@ -52,8 +52,6 @@ Stealthy file extraction via DNS requests
 	
 if __name__ == '__main__':
 
-  z = False
-
   try:
 
     ip = sys.argv[1]
