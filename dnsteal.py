@@ -95,4 +95,4 @@ if __name__ == '__main__':
 	
       f.close()
     else: 
-      os.popen("bash -c 'cat " + filename + " | gunzip > " + filename + "'")
+      os.popen("mv " + filename + " " + filename + ".ori ; cat " + filename + ".ori | gunzip > " + filename)
