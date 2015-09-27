@@ -44,7 +44,7 @@ def banner():
      | |) | .` \__ \  _/ -_) _` | |
      |___/|_|\_|___/\__\___\__,_|_|
 
--- https://github.com/m57/dnsteal.git --\033[0m
+-- https://github.com/nemanjan00/dnsteal.git --\033[0m
 
 Stealthy file extraction via DNS requests
 """
