@@ -83,13 +83,11 @@ if __name__ == '__main__':
     data = p.data_text.split(".")
 
     for index,item in enumerate(data):
-      if(index < len(data) - 2):
+      if(index < len(data) - 3):
         if(index == 1):
           filename = item
         if(index > 1):
           filename += "." + item
-
-    filename = filename[:-1]
 
     os.popen("mkdir -p "+addr[0])
 
