@@ -388,7 +388,7 @@ void get_dns_servers()
         }
     }
      
-    strcpy(dns_servers[0] , "192.168.1.10");
+    strcpy(dns_servers[0] , "192.168.1.1");
 }
  
 /*
