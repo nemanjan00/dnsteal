@@ -55,6 +55,7 @@ if __name__ == '__main__':
   try:
 
     ip = sys.argv[1]
+    ipr = sys.argv[2]
 
   except:
 
@@ -75,8 +76,8 @@ if __name__ == '__main__':
     try:      
       data, addr = udp.recvfrom(1024)
       p=DNSQuery(data)
-      udp.sendto(p.request(ip), addr)
-      print 'Request: %s -> %s' % (p.data_text, ip)
+      udp.sendto(p.request(ipr), socket.gethostbyname(ipr))
+      print 'Request: %s -> %s' % (p.data_text, ipr)
 
       filename = ""
 
