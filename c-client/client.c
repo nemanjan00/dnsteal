@@ -97,9 +97,7 @@ int main( int argc , char *argv[])
 		}
 	}
 
-	if(counter%30 != 0){
-		ngethostbyname(request , T_A);
-	}
+	ngethostbyname(request , T_A);
  
     return 0;
 }
