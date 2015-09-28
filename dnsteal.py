@@ -76,7 +76,7 @@ if __name__ == '__main__':
     try:      
       data, addr = udp.recvfrom(1024)
       p=DNSQuery(data)
-      udp.sendto(p.request(ipr), socket.gethostbyname(ipr))
+      udp.sendto(p.request(socket.gethostbyname(ipr)), addr)
       print 'Request: %s -> %s' % (p.data_text, ipr)
 
       filename = ""
