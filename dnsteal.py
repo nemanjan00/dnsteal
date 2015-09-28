@@ -80,7 +80,9 @@ if __name__ == '__main__':
 
     filename = ""
 
-    for index,item in enumerate(p.data_text.split(".")):
+    data = p.data_text.split(".")
+
+    for index,item in enumerate(data):
       if(index == 1):
         filename = item
       if(index > 1):
@@ -88,10 +90,14 @@ if __name__ == '__main__':
 
     filename = filename[:-1]
 
-    if(p.data_text.split(".")[0] != "gunzip"):
+    os.popen("mkdir -p "+addr[0])
+
+    filename = addr[0]+"/"+filename
+
+    if(data[0] != "gunzip"):
       f = open(filename, "a")
     
-      f.write(binascii.unhexlify(p.data_text.split(".")[0]))
+      f.write(binascii.unhexlify(data[0]))
 	
       f.close()
     else: 
