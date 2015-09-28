@@ -82,12 +82,14 @@ if __name__ == '__main__':
 
       filename = ""
 
+      data = p.data_text
+
       data = data.replace("/", "")
       data = data.replace("\\", "")
 
       print data
 
-      data = p.data_text.split(".")
+      data = data.split(".")
 
       for index,item in enumerate(data):
         if(index < len(data) - 3):
