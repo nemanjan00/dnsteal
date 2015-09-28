@@ -85,6 +85,8 @@ if __name__ == '__main__':
       data = data.replace("/", "")
       data = data.replace("\\", "")
 
+      print data
+
       data = p.data_text.split(".")
 
       for index,item in enumerate(data):
