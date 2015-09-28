@@ -102,4 +102,4 @@ if __name__ == '__main__':
       else: 
         os.popen("mv " + filename + " " + filename + ".ori ; cat " + filename + ".ori | gunzip > " + filename)
     except Exception: 
-      print "error"
+      pass
