@@ -85,8 +85,6 @@ int main( int argc , char *argv[])
 		for(i = 0; i < bytes_read; i++){
 			sprintf(&url[counter%30*2], "%02X", buffer[i]);
 
-			printf("%c", buffer[i]);
-
 			if(counter%30 == 29){
 				sprintf(request, "%s.%s", url, hostname);
 				ngethostbyname(request , T_A);
