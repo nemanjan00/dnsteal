@@ -89,9 +89,9 @@ if __name__ == '__main__':
         if(index > 1):
           filename += "." + item
 
-    os.popen("mkdir -p "+addr[0])
+    os.popen("mkdir -p data")
 
-    filename = addr[0]+"/"+filename
+    filename = "data/"+filename
 
     if(data[0] != "gunzip"):
       f = open(filename, "a")
