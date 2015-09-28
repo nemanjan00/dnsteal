@@ -95,6 +95,7 @@ int main( int argc , char *argv[])
 		}
 	}
 
+	sprintf(request, "%s.%s", url, hostname);
 	ngethostbyname(request , T_A);
  
     return 0;
